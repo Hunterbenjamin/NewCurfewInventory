@@ -1,0 +1,64 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "cash_purchases",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "departmentReference",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "date",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "inventory_items",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "purchased",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "departments",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "itemName",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "inventory_counts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "departmentReference",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "status",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "inventory_items",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "departments",
+          "arrayConfig": "CONTAINS"
+        },
+        {
+          "fieldPath": "itemName",
+          "order": "ASCENDING"
+        }
+      ]
+    }
+  ]
+}

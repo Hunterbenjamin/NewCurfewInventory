@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "422593586539",
+    "project_id": "curfew-inventory-web-ap-ifkeww",
+    "storage_bucket": "curfew-inventory-web-ap-ifkeww.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422593586539:android:3eb8e4aa53254fae58d82e",
+        "android_client_info": {
+          "package_name": "com.mycompany.curfewinventory"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1AJJryNhPIwls4ZXYZay5qqmNK8-l3LQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:422593586539:android:fd3df5007961db8458d82e",
+        "android_client_info": {
+          "package_name": "com.mycompany.dashboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1AJJryNhPIwls4ZXYZay5qqmNK8-l3LQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
