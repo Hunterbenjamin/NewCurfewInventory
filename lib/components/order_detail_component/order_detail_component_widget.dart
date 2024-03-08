@@ -189,8 +189,12 @@ class _OrderDetailComponentWidgetState
                           obscureText: false,
                           decoration: InputDecoration(
                             isDense: true,
-                            labelStyle:
-                                FlutterFlowTheme.of(context).labelMedium,
+                            labelStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Roboto',
+                                  fontSize: 18.0,
+                                ),
                             hintText: () {
                               if (widget.isReceiving &&
                                   (_model.textFieldFocusNode?.hasFocus ??
@@ -202,7 +206,12 @@ class _OrderDetailComponentWidgetState
                                 return null;
                               }
                             }(),
-                            hintStyle: FlutterFlowTheme.of(context).labelMedium,
+                            hintStyle: FlutterFlowTheme.of(context)
+                                .labelMedium
+                                .override(
+                                  fontFamily: 'Roboto',
+                                  fontSize: 18.0,
+                                ),
                             enabledBorder: InputBorder.none,
                             focusedBorder: InputBorder.none,
                             errorBorder: InputBorder.none,

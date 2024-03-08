@@ -93,6 +93,7 @@ class _InventoryWidgetState extends State<InventoryWidget> {
     return StreamBuilder<List<ItemCountRecord>>(
       stream: queryItemCountRecord(
         parent: _model.inventoryCountsReference,
+        queryBuilder: (itemCountRecord) => itemCountRecord.orderBy('itemName'),
       ),
       builder: (context, snapshot) {
         // Customize what your widget looks like when it's loading.
@@ -771,7 +772,7 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                                     ),
                                                   ),
                                                   Flexible(
-                                                    flex: 4,
+                                                    flex: 5,
                                                     child: Container(
                                                       width: 100.0,
                                                       height: 100.0,
@@ -823,6 +824,7 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                                     ),
                                                   ),
                                                   Expanded(
+                                                    flex: 2,
                                                     child: Container(
                                                       width: 100.0,
                                                       height: 100.0,

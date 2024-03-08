@@ -156,7 +156,9 @@ class _NewOrderWidgetState extends State<NewOrderWidget> {
                   height: 45.0,
                   decoration: BoxDecoration(),
                   child: Visibility(
-                    visible: !_model.isEditing && !_model.showBottomSheet,
+                    visible: !_model.isEditing &&
+                        !_model.showBottomSheet &&
+                        (_model.ordersPageState.isNotEmpty),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -225,7 +227,8 @@ class _NewOrderWidgetState extends State<NewOrderWidget> {
                                     width: double.infinity,
                                     height: 40.0,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFF4484C8),
+                                      color: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
                                     ),
                                     alignment: AlignmentDirectional(-1.0, 0.0),
                                     child: Padding(
@@ -234,13 +237,11 @@ class _NewOrderWidgetState extends State<NewOrderWidget> {
                                       child: Text(
                                         containerSuppliersRecord.supplierName,
                                         style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
+                                            .bodyLarge
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondary,
                                               fontSize: 18.0,
+                                              fontWeight: FontWeight.w500,
                                             ),
                                       ),
                                     ),

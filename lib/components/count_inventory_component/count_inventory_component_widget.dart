@@ -104,13 +104,12 @@ class _CountInventoryComponentWidgetState
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Expanded(
-                        flex: 7,
+                        flex: 8,
                         child: Container(
                           width: 100.0,
                           height: 100.0,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
+                            color: Colors.transparent,
                           ),
                           alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Padding(
@@ -132,15 +131,14 @@ class _CountInventoryComponentWidgetState
                         ),
                       ),
                       Expanded(
-                        flex: 4,
+                        flex: 5,
                         child: Align(
                           alignment: AlignmentDirectional(0.0, 0.0),
                           child: Container(
                             width: double.infinity,
                             height: double.infinity,
                             decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
+                              color: Colors.transparent,
                               border: Border.all(
                                 color: Colors.transparent,
                                 width: 0.0,
@@ -217,6 +215,7 @@ class _CountInventoryComponentWidgetState
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Roboto',
+                                                fontSize: 18.0,
                                                 lineHeight: 1.0,
                                               ),
                                           textAlign: TextAlign.center,
@@ -310,8 +309,7 @@ class _CountInventoryComponentWidgetState
                           width: 100.0,
                           height: 100.0,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
+                            color: Colors.transparent,
                           ),
                           alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Align(
@@ -332,13 +330,12 @@ class _CountInventoryComponentWidgetState
                         ),
                       ),
                       Expanded(
-                        flex: 1,
+                        flex: 2,
                         child: Container(
                           width: 100.0,
                           height: 100.0,
                           decoration: BoxDecoration(
-                            color: FlutterFlowTheme.of(context)
-                                .secondaryBackground,
+                            color: Colors.transparent,
                           ),
                           alignment: AlignmentDirectional(-1.0, 0.0),
                           child: Visibility(
