@@ -179,18 +179,16 @@ class _CashPurchasesWidgetState extends State<CashPurchasesWidget> {
               Expanded(
                 child: StreamBuilder<List<CashPurchasesRecord>>(
                   stream: queryCashPurchasesRecord(
-                    queryBuilder: (cashPurchasesRecord) => cashPurchasesRecord
-                        .where(
-                          'departmentReference',
-                          isEqualTo: FFAppState()
+                    queryBuilder: (cashPurchasesRecord) =>
+                        cashPurchasesRecord.where(
+                      'departmentReference',
+                      isEqualTo:
+                          FFAppState().departmentAppState.departmentReference,
+                      isNull: (FFAppState()
                               .departmentAppState
-                              .departmentReference,
-                          isNull: (FFAppState()
-                                  .departmentAppState
-                                  .departmentReference) ==
-                              null,
-                        )
-                        .orderBy('date', descending: true),
+                              .departmentReference) ==
+                          null,
+                    ),
                   ),
                   builder: (context, snapshot) {
                     // Customize what your widget looks like when it's loading.

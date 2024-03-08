@@ -1,20 +1,6 @@
 {
   "indexes": [
     {
-      "collectionGroup": "cash_purchases",
-      "queryScope": "COLLECTION",
-      "fields": [
-        {
-          "fieldPath": "departmentReference",
-          "order": "ASCENDING"
-        },
-        {
-          "fieldPath": "date",
-          "order": "DESCENDING"
-        }
-      ]
-    },
-    {
       "collectionGroup": "inventory_items",
       "queryScope": "COLLECTION",
       "fields": [
