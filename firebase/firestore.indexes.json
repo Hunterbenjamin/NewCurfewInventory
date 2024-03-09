@@ -10,7 +10,7 @@
         },
         {
           "fieldPath": "dateSent",
-          "order": "ASCENDING"
+          "order": "DESCENDING"
         }
       ]
     },

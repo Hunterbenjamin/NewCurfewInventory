@@ -141,7 +141,7 @@ class _OrderOptionConponentWidgetState
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Roboto',
-                                    fontSize: 14.0,
+                                    fontSize: 16.0,
                                   ),
                         ),
                       ],

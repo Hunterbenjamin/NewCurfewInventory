@@ -436,7 +436,8 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                                                     .secondaryText,
                                                                 fontSize: 16.0,
                                                               ),
-                                                      hintText: 'Category',
+                                                      hintText:
+                                                          'Filter Category',
                                                       icon: Icon(
                                                         Icons.filter_list,
                                                         color:
@@ -508,7 +509,8 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                                                     .secondaryText,
                                                                 fontSize: 16.0,
                                                               ),
-                                                      hintText: 'Counted',
+                                                      hintText:
+                                                          'Filter Counted',
                                                       icon: Icon(
                                                         Icons.filter_list,
                                                         color:
