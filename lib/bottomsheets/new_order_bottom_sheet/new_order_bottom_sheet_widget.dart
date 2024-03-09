@@ -118,16 +118,15 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Roboto',
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
+                                            color: Color(0xFF767679),
                                             fontSize: 16.0,
-                                            fontWeight: FontWeight.w500,
+                                            fontWeight: FontWeight.normal,
                                           ),
                                     ),
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 2.0, 0.0, 0.0),
+                                        0.0, 5.0, 0.0, 0.0),
                                     child: TextFormField(
                                       controller: _model.textController1,
                                       focusNode: _model.textFieldFocusNode,
@@ -316,59 +315,66 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Roboto',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryText,
+                                        color: Color(0xFF767679),
                                         fontSize: 16.0,
-                                        fontWeight: FontWeight.w500,
+                                        fontWeight: FontWeight.normal,
                                       ),
                                 ),
                               ),
-                              Builder(
-                                builder: (context) {
-                                  final orderOptionVar = _model
-                                          .selectedItemDocument?.orderingOptions
-                                          ?.map((e) => e)
-                                          .toList()
-                                          ?.toList() ??
-                                      [];
-                                  return Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children:
-                                        List.generate(orderOptionVar.length,
-                                            (orderOptionVarIndex) {
-                                      final orderOptionVarItem =
-                                          orderOptionVar[orderOptionVarIndex];
-                                      return InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          setState(() {
-                                            _model.selectedOrderIndex =
-                                                orderOptionVarIndex;
-                                            _model.selectedOrderOption =
-                                                orderOptionVarItem;
-                                          });
-                                        },
-                                        child: OrderOptionConponentWidget(
-                                          key: Key(
-                                              'Key241_${orderOptionVarIndex}_of_${orderOptionVar.length}'),
-                                          supplierReference: orderOptionVarItem
-                                              .supplierReference,
-                                          orderOption: orderOptionVarItem,
-                                          selectedIndex:
-                                              _model.selectedOrderIndex,
-                                          thisItemIndex: orderOptionVarIndex,
-                                          itemUnit: _model.selectedItemDocument!
-                                              .unit.unitSpecific,
-                                        ),
-                                      );
-                                    }),
-                                  );
-                                },
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 5.0, 0.0, 0.0),
+                                child: Builder(
+                                  builder: (context) {
+                                    final orderOptionVar = _model
+                                            .selectedItemDocument
+                                            ?.orderingOptions
+                                            ?.map((e) => e)
+                                            .toList()
+                                            ?.toList() ??
+                                        [];
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children:
+                                          List.generate(orderOptionVar.length,
+                                              (orderOptionVarIndex) {
+                                        final orderOptionVarItem =
+                                            orderOptionVar[orderOptionVarIndex];
+                                        return InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            setState(() {
+                                              _model.selectedOrderIndex =
+                                                  orderOptionVarIndex;
+                                              _model.selectedOrderOption =
+                                                  orderOptionVarItem;
+                                            });
+                                          },
+                                          child: OrderOptionConponentWidget(
+                                            key: Key(
+                                                'Key241_${orderOptionVarIndex}_of_${orderOptionVar.length}'),
+                                            supplierReference:
+                                                orderOptionVarItem
+                                                    .supplierReference,
+                                            orderOption: orderOptionVarItem,
+                                            selectedIndex:
+                                                _model.selectedOrderIndex,
+                                            thisItemIndex: orderOptionVarIndex,
+                                            itemUnit: _model
+                                                .selectedItemDocument!
+                                                .unit
+                                                .unitSpecific,
+                                          ),
+                                        );
+                                      }),
+                                    );
+                                  },
+                                ),
                               ),
-                            ].divide(SizedBox(height: 10.0)),
+                            ],
                           ),
                         ),
                       if (_model.itemSelected)
@@ -380,219 +386,288 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                           ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Expanded(
-                                flex: 1,
-                                child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  child: Container(
-                                    decoration: BoxDecoration(),
-                                  ),
-                                ),
-                              ),
-                              Container(
-                                decoration: BoxDecoration(),
-                                child: Stack(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
-                                  children: [
-                                    Container(
-                                      width: 170.0,
-                                      height: 50.0,
-                                      decoration: BoxDecoration(
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        border: Border.all(
-                                          color: FlutterFlowTheme.of(context)
-                                              .alternate,
-                                        ),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              setState(() {
-                                                _model.counterFieldController
-                                                    ?.text = (double.parse(_model
-                                                            .counterFieldController
-                                                            .text) -
-                                                        1)
-                                                    .toString();
-                                              });
-                                            },
-                                            child: Container(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              decoration: BoxDecoration(),
-                                              alignment: AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: FaIcon(
-                                                FontAwesomeIcons.minus,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                size: 20.0,
-                                              ),
-                                            ),
-                                          ),
-                                          InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              if (_model.counterFieldController
-                                                          .text ==
-                                                      null ||
-                                                  _model.counterFieldController
-                                                          .text ==
-                                                      '') {
-                                                setState(() {
-                                                  _model.counterFieldController
-                                                      ?.text = '1';
-                                                });
-                                              } else {
-                                                setState(() {
-                                                  _model.counterFieldController
-                                                      ?.text = (double.parse(_model
-                                                              .counterFieldController
-                                                              .text) +
-                                                          1)
-                                                      .toString();
-                                                });
-                                              }
-                                            },
-                                            child: Container(
-                                              width: 50.0,
-                                              height: 50.0,
-                                              decoration: BoxDecoration(),
-                                              alignment: AlignmentDirectional(
-                                                  0.0, 0.0),
-                                              child: FaIcon(
-                                                FontAwesomeIcons.plus,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                size: 20.0,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    Container(
-                                      height: 50.0,
-                                      decoration: BoxDecoration(),
-                                      child: Container(
-                                        width: 70.0,
-                                        child: TextFormField(
-                                          controller:
-                                              _model.counterFieldController,
-                                          focusNode:
-                                              _model.counterFieldFocusNode,
-                                          obscureText: false,
-                                          decoration: InputDecoration(
-                                            labelStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium
-                                                    .override(
-                                                      fontFamily: 'Roboto',
-                                                      fontSize: 16.0,
-                                                    ),
-                                            hintStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .labelMedium,
-                                            enabledBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .alternate,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                            ),
-                                            focusedBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .info,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                            ),
-                                            errorBorder: OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                            ),
-                                            focusedErrorBorder:
-                                                OutlineInputBorder(
-                                              borderSide: BorderSide(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .error,
-                                                width: 1.0,
-                                              ),
-                                              borderRadius:
-                                                  BorderRadius.circular(0.0),
-                                            ),
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Roboto',
-                                                fontSize: 18.0,
-                                              ),
-                                          textAlign: TextAlign.center,
-                                          validator: _model
-                                              .counterFieldControllerValidator
-                                              .asValidator(context),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Expanded(
-                                flex: 1,
-                                child: Align(
-                                  alignment: AlignmentDirectional(0.0, 0.0),
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 15.0, 0.0, 0.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 0.0, 0.0),
                                   child: Text(
-                                    valueOrDefault<String>(
-                                      _model.selectedOrderOption?.purchaseUnit,
-                                      'unit',
-                                    ),
-                                    textAlign: TextAlign.center,
+                                    'Order Quantity',
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
                                           fontFamily: 'Roboto',
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryText,
-                                          fontSize: 18.0,
+                                          color: Color(0xFF767679),
+                                          fontSize: 16.0,
+                                          fontWeight: FontWeight.normal,
                                         ),
                                   ),
                                 ),
-                              ),
-                            ].divide(SizedBox(width: 5.0)),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 10.0, 0.0, 15.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Expanded(
+                                        flex: 1,
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Container(
+                                            decoration: BoxDecoration(),
+                                          ),
+                                        ),
+                                      ),
+                                      Container(
+                                        decoration: BoxDecoration(),
+                                        child: Stack(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          children: [
+                                            Container(
+                                              width: 170.0,
+                                              height: 50.0,
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
+                                                borderRadius:
+                                                    BorderRadius.circular(8.0),
+                                                border: Border.all(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .alternate,
+                                                ),
+                                              ),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      setState(() {
+                                                        _model
+                                                            .counterFieldController
+                                                            ?.text = (double
+                                                                    .parse(_model
+                                                                        .counterFieldController
+                                                                        .text) -
+                                                                1)
+                                                            .toString();
+                                                      });
+                                                    },
+                                                    child: Container(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: FaIcon(
+                                                        FontAwesomeIcons.minus,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 20.0,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      if (_model.counterFieldController
+                                                                  .text ==
+                                                              null ||
+                                                          _model.counterFieldController
+                                                                  .text ==
+                                                              '') {
+                                                        setState(() {
+                                                          _model
+                                                              .counterFieldController
+                                                              ?.text = '1';
+                                                        });
+                                                      } else {
+                                                        setState(() {
+                                                          _model
+                                                              .counterFieldController
+                                                              ?.text = (double
+                                                                      .parse(_model
+                                                                          .counterFieldController
+                                                                          .text) +
+                                                                  1)
+                                                              .toString();
+                                                        });
+                                                      }
+                                                    },
+                                                    child: Container(
+                                                      width: 50.0,
+                                                      height: 50.0,
+                                                      decoration:
+                                                          BoxDecoration(),
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                              0.0, 0.0),
+                                                      child: FaIcon(
+                                                        FontAwesomeIcons.plus,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 20.0,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              height: 50.0,
+                                              decoration: BoxDecoration(),
+                                              child: Container(
+                                                width: 70.0,
+                                                child: TextFormField(
+                                                  controller: _model
+                                                      .counterFieldController,
+                                                  focusNode: _model
+                                                      .counterFieldFocusNode,
+                                                  obscureText: false,
+                                                  decoration: InputDecoration(
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .labelMedium
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          fontSize: 16.0,
+                                                        ),
+                                                    hintStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .labelMedium,
+                                                    enabledBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .alternate,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                    ),
+                                                    focusedBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .info,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                    ),
+                                                    errorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                    ),
+                                                    focusedErrorBorder:
+                                                        OutlineInputBorder(
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .error,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                    ),
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        fontSize: 18.0,
+                                                      ),
+                                                  textAlign: TextAlign.center,
+                                                  validator: _model
+                                                      .counterFieldControllerValidator
+                                                      .asValidator(context),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      Expanded(
+                                        flex: 1,
+                                        child: Align(
+                                          alignment:
+                                              AlignmentDirectional(0.0, 0.0),
+                                          child: Text(
+                                            valueOrDefault<String>(
+                                              _model.selectedOrderOption
+                                                  ?.purchaseUnit,
+                                              'unit',
+                                            ),
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Roboto',
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  fontSize: 18.0,
+                                                ),
+                                          ),
+                                        ),
+                                      ),
+                                    ].divide(SizedBox(width: 5.0)),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       Align(

@@ -283,8 +283,10 @@ class _CountInventoryComponentWidgetState
                                               AlignmentDirectional(0.0, 0.0),
                                           child: Text(
                                             widget.itemCount!.counted
-                                                ? widget.itemCount!.itemQuantity
-                                                    .toString()
+                                                ? ((double var1) {
+                                                    return '${var1 == var1.toInt() ? var1.toInt() : var1}';
+                                                  }(widget
+                                                    .itemCount!.itemQuantity))
                                                 : ' ',
                                             textAlign: TextAlign.center,
                                             style: FlutterFlowTheme.of(context)

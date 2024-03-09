@@ -131,10 +131,9 @@ class _DraftItemComponentWidgetState extends State<DraftItemComponentWidget> {
                         child: Align(
                           alignment: AlignmentDirectional(0.0, 0.0),
                           child: Text(
-                            valueOrDefault<String>(
-                              widget.draftItem?.quantityOrdered?.toString(),
-                              '0',
-                            ),
+                            (double var1) {
+                              return '${var1 == var1.toInt() ? var1.toInt() : var1}';
+                            }(widget.draftItem!.quantityOrdered),
                             style: FlutterFlowTheme.of(context)
                                 .bodyMedium
                                 .override(

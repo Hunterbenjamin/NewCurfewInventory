@@ -152,13 +152,6 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                       }
                       List<OrdersRecord> listViewOrdersRecordList =
                           snapshot.data!;
-                      if (listViewOrdersRecordList.isEmpty) {
-                        return Center(
-                          child: Image.asset(
-                            'assets/images/EmptyOrderImage.png',
-                          ),
-                        );
-                      }
                       return ListView.builder(
                         padding: EdgeInsets.fromLTRB(
                           0,

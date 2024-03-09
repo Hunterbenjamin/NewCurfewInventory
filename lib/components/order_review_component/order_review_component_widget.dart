@@ -517,8 +517,10 @@ class _OrderReviewComponentWidgetState
                                               alignment: AlignmentDirectional(
                                                   0.0, 0.0),
                                               child: Text(
-                                                orderItemVarItem.quantityOrdered
-                                                    .toString(),
+                                                (double var1) {
+                                                  return '${var1 == var1.toInt() ? var1.toInt() : var1}';
+                                                }(orderItemVarItem
+                                                    .quantityOrdered),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium

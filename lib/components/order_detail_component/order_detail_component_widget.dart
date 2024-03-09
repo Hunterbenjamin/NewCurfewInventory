@@ -120,7 +120,9 @@ class _OrderDetailComponentWidgetState
                         padding:
                             EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                         child: Text(
-                          widget.orderItem!.quantityOrdered.toString(),
+                          (double var1) {
+                            return '${var1 == var1.toInt() ? var1.toInt() : var1}';
+                          }(widget.orderItem!.quantityOrdered),
                           style:
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Roboto',
