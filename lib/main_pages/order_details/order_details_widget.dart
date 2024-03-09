@@ -40,6 +40,8 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
       setState(() {
         _model.orderStatus = widget.orderDocument?.status;
         _model.isLoading = false;
+        _model.isCompleted =
+            widget.orderDocument?.status == 'Complete' ? true : false;
       });
     });
   }
@@ -234,33 +236,35 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                       ),
                                                 ),
                                               ),
-                                              Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(10.0, 5.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      'Order Status: ',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                fontSize: 16.0,
-                                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 5.0, 0.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        'Order Status: ',
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .labelMedium
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Roboto',
+                                                              fontSize: 16.0,
+                                                            ),
+                                                      ),
                                                     ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 5.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
+                                                    Text(
                                                       valueOrDefault<String>(
                                                         _model.orderStatus,
                                                         'status',
@@ -272,138 +276,22 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Roboto',
+                                                                color: widget
+                                                                            .orderDocument
+                                                                            ?.status ==
+                                                                        'Complete'
+                                                                    ? FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .success
+                                                                    : FlutterFlowTheme.of(
+                                                                            context)
+                                                                        .info,
                                                                 fontSize: 16.0,
                                                               ),
                                                     ),
-                                                  ),
-                                                ],
-                                              ),
-                                              if (widget.orderDocument
-                                                          ?.orderNotes !=
-                                                      null &&
-                                                  widget.orderDocument
-                                                          ?.orderNotes !=
-                                                      '')
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          5.0, 5.0, 0.0, 0.0),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    constraints: BoxConstraints(
-                                                      maxWidth: 200.0,
-                                                    ),
-                                                    decoration: BoxDecoration(),
-                                                    child: Stack(
-                                                      alignment:
-                                                          AlignmentDirectional(
-                                                              -1.0, -1.0),
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      0.0,
-                                                                      10.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Container(
-                                                            width:
-                                                                double.infinity,
-                                                            height: 60.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          5.0),
-                                                              border:
-                                                                  Border.all(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .accent4,
-                                                              ),
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          10.0,
-                                                                          10.0,
-                                                                          10.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                valueOrDefault<
-                                                                    String>(
-                                                                  widget
-                                                                      .orderDocument
-                                                                      ?.orderNotes,
-                                                                  'notes',
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Roboto',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      fontSize:
-                                                                          14.0,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      5.0,
-                                                                      0.0,
-                                                                      0.0,
-                                                                      0.0),
-                                                          child: Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                            ),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          5.0,
-                                                                          0.0,
-                                                                          3.0,
-                                                                          0.0),
-                                                              child: Text(
-                                                                'Note: ',
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Roboto',
-                                                                      color: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .secondaryText,
-                                                                      fontSize:
-                                                                          14.0,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
+                                                  ],
                                                 ),
+                                              ),
                                             ],
                                           ),
                                         ),
@@ -432,7 +320,7 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                         0.0, 2.0, 0.0, 0.0),
                                                 child: Text(
                                                   dateTimeFormat(
-                                                      'EEEE',
+                                                      'MEd',
                                                       widget.orderDocument!
                                                           .dateSent!),
                                                   style: FlutterFlowTheme.of(
@@ -441,24 +329,6 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         fontSize: 18.0,
-                                                      ),
-                                                ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        0.0, 5.0, 0.0, 0.0),
-                                                child: Text(
-                                                  dateTimeFormat(
-                                                      'yMd',
-                                                      widget.orderDocument!
-                                                          .dateSent!),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        fontSize: 16.0,
                                                       ),
                                                 ),
                                               ),
