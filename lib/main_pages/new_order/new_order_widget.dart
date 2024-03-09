@@ -5,11 +5,13 @@ import '/components/draft_item_component/draft_item_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:async';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'new_order_model.dart';
@@ -26,6 +28,8 @@ class _NewOrderWidgetState extends State<NewOrderWidget> {
   late NewOrderModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  late StreamSubscription<bool> _keyboardVisibilitySubscription;
+  bool _isKeyboardVisible = false;
 
   @override
   void initState() {
@@ -82,12 +86,24 @@ class _NewOrderWidgetState extends State<NewOrderWidget> {
         _model.isLoading = false;
       });
     });
+
+    if (!isWeb) {
+      _keyboardVisibilitySubscription =
+          KeyboardVisibilityController().onChange.listen((bool visible) {
+        setState(() {
+          _isKeyboardVisible = visible;
+        });
+      });
+    }
   }
 
   @override
   void dispose() {
     _model.dispose();
 
+    if (!isWeb) {
+      _keyboardVisibilitySubscription.cancel();
+    }
     super.dispose();
   }
 
@@ -525,7 +541,10 @@ class _NewOrderWidgetState extends State<NewOrderWidget> {
                     ],
                   ),
                 ),
-              if (_model.ordersPageState.isNotEmpty)
+              if ((_model.ordersPageState.isNotEmpty) &&
+                  !(isWeb
+                      ? MediaQuery.viewInsetsOf(context).bottom > 0
+                      : _isKeyboardVisible))
                 Align(
                   alignment: AlignmentDirectional(0.0, 1.0),
                   child: Container(

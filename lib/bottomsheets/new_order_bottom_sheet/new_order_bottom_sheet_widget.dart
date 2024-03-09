@@ -461,16 +461,25 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                                     highlightColor:
                                                         Colors.transparent,
                                                     onTap: () async {
-                                                      setState(() {
-                                                        _model
-                                                            .counterFieldController
-                                                            ?.text = (double
-                                                                    .parse(_model
-                                                                        .counterFieldController
-                                                                        .text) -
-                                                                1)
-                                                            .toString();
-                                                      });
+                                                      if ((_model.counterFieldController
+                                                                      .text !=
+                                                                  null &&
+                                                              _model.counterFieldController
+                                                                      .text !=
+                                                                  '') &&
+                                                          (_model.counterFieldController
+                                                                  .text !=
+                                                              '0')) {
+                                                        setState(() {
+                                                          _model
+                                                              .counterFieldController
+                                                              ?.text = (int.parse(_model
+                                                                      .counterFieldController
+                                                                      .text) -
+                                                                  1)
+                                                              .toString();
+                                                        });
+                                                      }
                                                     },
                                                     child: Container(
                                                       width: 50.0,
@@ -515,11 +524,10 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                                         setState(() {
                                                           _model
                                                               .counterFieldController
-                                                              ?.text = (double
-                                                                      .parse(_model
-                                                                          .counterFieldController
-                                                                          .text) +
-                                                                  1.0)
+                                                              ?.text = (int.parse(_model
+                                                                      .counterFieldController
+                                                                      .text) +
+                                                                  1)
                                                               .toString();
                                                         });
                                                       }
