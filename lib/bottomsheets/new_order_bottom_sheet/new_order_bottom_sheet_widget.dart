@@ -639,6 +639,8 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                                           lineHeight: 1.0,
                                                         ),
                                                     textAlign: TextAlign.center,
+                                                    keyboardType:
+                                                        TextInputType.number,
                                                     validator: _model
                                                         .counterFieldControllerValidator
                                                         .asValidator(context),

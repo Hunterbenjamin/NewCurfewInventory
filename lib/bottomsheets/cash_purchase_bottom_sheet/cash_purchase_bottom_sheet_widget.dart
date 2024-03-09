@@ -358,6 +358,9 @@ class _CashPurchaseBottomSheetWidgetState
                                         required isFocused,
                                         maxLength}) =>
                                     null,
+                                keyboardType:
+                                    const TextInputType.numberWithOptions(
+                                        decimal: true),
                                 validator: _model.textController2Validator
                                     .asValidator(context),
                               ),

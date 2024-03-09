@@ -188,7 +188,7 @@ class _NewOrderWidgetState extends State<NewOrderWidget> {
                       child: Icon(
                         Icons.edit_note,
                         color: FlutterFlowTheme.of(context).secondary,
-                        size: 30.0,
+                        size: 34.0,
                       ),
                     ),
                   ),
@@ -241,7 +241,7 @@ class _NewOrderWidgetState extends State<NewOrderWidget> {
                                 children: [
                                   Container(
                                     width: double.infinity,
-                                    height: 40.0,
+                                    height: 45.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBackground,

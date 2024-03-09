@@ -96,7 +96,7 @@ class _CountInventoryComponentWidgetState
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 2.0, 0.0, 2.0),
                 child: Container(
-                  height: 45.0,
+                  height: 50.0,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                   ),

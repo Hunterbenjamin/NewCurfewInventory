@@ -184,108 +184,41 @@ class _OrderReviewComponentWidgetState
                             decoration: BoxDecoration(
                               color: Colors.transparent,
                             ),
-                            child: Stack(
-                              alignment: AlignmentDirectional(-1.0, -1.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                if (_model.exsistingNote != null &&
-                                    _model.exsistingNote != '')
-                                  Stack(
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 5.0, 0.0, 0.0),
-                                        child: Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.45,
-                                          height: 60.0,
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                            border: Border.all(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent4,
-                                            ),
-                                          ),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    7.0, 10.0, 10.0, 0.0),
-                                            child: Text(
-                                              _model.exsistingNote!,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        fontSize: 14.0,
-                                                      ),
-                                            ),
-                                          ),
-                                        ),
+                                Text(
+                                  _model.exsistingNote != null &&
+                                          _model.exsistingNote != ''
+                                      ? 'Edit Note'
+                                      : 'Add Note',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        fontSize: 16.0,
                                       ),
+                                ),
+                                Stack(
+                                  children: [
+                                    if (_model.exsistingNote != null &&
+                                        _model.exsistingNote != '')
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 0.0, 0.0),
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                          ),
-                                          alignment:
-                                              AlignmentDirectional(0.0, 0.0),
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    3.0, 0.0, 2.0, 0.0),
-                                            child: Text(
-                                              'Note: ',
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        fontSize: 14.0,
-                                                      ),
-                                            ),
-                                          ),
+                                        child: Icon(
+                                          Icons.sticky_note_2_outlined,
+                                          color: FlutterFlowTheme.of(context)
+                                              .warning,
+                                          size: 20.0,
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                if (_model.exsistingNote == null ||
-                                    _model.exsistingNote == '')
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    crossAxisAlignment: CrossAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        _model.exsistingNote != null &&
-                                                _model.exsistingNote != ''
-                                            ? 'Edit Note'
-                                            : 'Add Note',
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Roboto',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontSize: 16.0,
-                                            ),
-                                      ),
+                                    if (_model.exsistingNote == null ||
+                                        _model.exsistingNote == '')
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 0.0, 0.0),
@@ -296,8 +229,8 @@ class _OrderReviewComponentWidgetState
                                           size: 20.0,
                                         ),
                                       ),
-                                    ],
-                                  ),
+                                  ],
+                                ),
                               ],
                             ),
                           ),
@@ -433,7 +366,7 @@ class _OrderReviewComponentWidgetState
                                       orderItemVar[orderItemVarIndex];
                                   return Container(
                                     width: 100.0,
-                                    height: 45.0,
+                                    height: 50.0,
                                     decoration: BoxDecoration(
                                       color: FlutterFlowTheme.of(context)
                                           .secondaryBackground,

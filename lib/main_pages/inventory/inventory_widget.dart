@@ -216,7 +216,7 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                       child: Icon(
                         Icons.edit_note,
                         color: FlutterFlowTheme.of(context).secondary,
-                        size: 30.0,
+                        size: 34.0,
                       ),
                     ),
                   ),
