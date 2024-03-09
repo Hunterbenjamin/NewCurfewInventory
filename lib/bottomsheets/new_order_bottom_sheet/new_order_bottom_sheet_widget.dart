@@ -50,7 +50,7 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
-    _model.counterFieldController ??= TextEditingController(text: '2');
+    _model.counterFieldController ??= TextEditingController();
     _model.counterFieldFocusNode ??= FocusNode();
   }
 
@@ -696,7 +696,7 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                   });
                                   setState(() {
                                     _model.textController1?.clear();
-                                    _model.counterFieldController?.text = '2';
+                                    _model.counterFieldController?.clear();
                                   });
                                 },
                                 text: 'Cancel',
