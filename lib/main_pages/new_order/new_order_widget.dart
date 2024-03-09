@@ -123,7 +123,7 @@ class _NewOrderWidgetState extends State<NewOrderWidget> {
                   child: Icon(
                     Icons.close,
                     color: FlutterFlowTheme.of(context).secondary,
-                    size: 44.0,
+                    size: 28.0,
                   ),
                 ),
               if (!_model.isEditing && !_model.showBottomSheet)

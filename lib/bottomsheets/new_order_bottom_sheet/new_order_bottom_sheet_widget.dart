@@ -79,6 +79,7 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
             borderRadius: BorderRadius.circular(5.0),
             child: Container(
               constraints: BoxConstraints(
+                minHeight: 450.0,
                 maxHeight: 700.0,
               ),
               decoration: BoxDecoration(
@@ -90,8 +91,8 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                 child: SingleChildScrollView(
                   primary: false,
                   child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Align(
                         alignment: AlignmentDirectional(-1.0, -1.0),
@@ -390,23 +391,20 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 15.0, 0.0, 0.0),
                             child: Column(
-                              mainAxisSize: MainAxisSize.max,
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      10.0, 0.0, 0.0, 0.0),
-                                  child: Text(
-                                    'Order Quantity',
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          color: Color(0xFF767679),
-                                          fontSize: 16.0,
-                                          fontWeight: FontWeight.normal,
-                                        ),
-                                  ),
+                                Text(
+                                  'Order Quantity',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        color: Color(0xFF767679),
+                                        fontSize: 16.0,
+                                        fontWeight: FontWeight.normal,
+                                      ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -522,7 +520,7 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                                                       .parse(_model
                                                                           .counterFieldController
                                                                           .text) +
-                                                                  1)
+                                                                  1.0)
                                                               .toString();
                                                         });
                                                       }
@@ -683,86 +681,90 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
                           ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              FFButtonWidget(
-                                onPressed: () async {
-                                  Navigator.pop(context);
-                                  setState(() {
-                                    _model.itemSelected = false;
-                                  });
-                                  setState(() {
-                                    _model.textController1?.clear();
-                                    _model.counterFieldController?.clear();
-                                  });
-                                },
-                                text: 'Cancel',
-                                options: FFButtonOptions(
-                                  width: 150.0,
-                                  height: 45.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: Colors.transparent,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Roboto',
-                                        color: FlutterFlowTheme.of(context)
-                                            .tertiary,
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.normal,
+                          child: Align(
+                            alignment: AlignmentDirectional(0.0, 1.0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 10.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        Navigator.pop(context);
+                                        setState(() {
+                                          _model.itemSelected = false;
+                                        });
+                                        setState(() {
+                                          _model.textController1?.clear();
+                                          _model.counterFieldController
+                                              ?.clear();
+                                        });
+                                      },
+                                      text: 'Cancel',
+                                      options: FFButtonOptions(
+                                        width: 150.0,
+                                        height: 45.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 0.0, 24.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: Colors.transparent,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Roboto',
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .tertiary,
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.normal,
+                                            ),
+                                        elevation: 0.0,
+                                        borderSide: BorderSide(
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
                                       ),
-                                  elevation: 0.0,
-                                  borderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).tertiary,
-                                    width: 1.0,
+                                    ),
                                   ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
-                              ),
-                              FFButtonWidget(
-                                onPressed: () async {
-                                  if (widget.newDraftOrders != null &&
-                                      (widget.newDraftOrders)!.isNotEmpty) {
-                                    if (widget.newDraftOrders!
-                                        .where((e) =>
-                                            e.supplierReference ==
-                                            _model.selectedOrderOption
-                                                ?.supplierReference)
-                                        .toList()
-                                        .isNotEmpty) {
-                                      var orderItemsRecordReference1 =
-                                          OrderItemsRecord.createDoc(widget
-                                              .newDraftOrders!
-                                              .where((e) =>
-                                                  e.supplierReference ==
-                                                  _model.selectedOrderOption
-                                                      ?.supplierReference)
-                                              .toList()
-                                              .first
-                                              .reference);
-                                      await orderItemsRecordReference1
-                                          .set(createOrderItemsRecordData(
-                                        itemReference: _model
-                                            .selectedItemDocument?.reference,
-                                        itemName: _model
-                                            .selectedItemDocument?.itemName,
-                                        unit: _model
-                                            .selectedOrderOption?.purchaseUnit,
-                                        pricePerUnit: _model
-                                            .selectedItemDocument?.currentPrice,
-                                        quantityOrdered: double.tryParse(
-                                            _model.counterFieldController.text),
-                                      ));
-                                      _model.newOrderItem1 =
-                                          OrderItemsRecord.getDocumentFromData(
-                                              createOrderItemsRecordData(
+                                  if (_model.textController1.text != null &&
+                                      _model.textController1.text != '')
+                                    Expanded(
+                                      child: FFButtonWidget(
+                                        onPressed: () async {
+                                          if (widget.newDraftOrders != null &&
+                                              (widget.newDraftOrders)!
+                                                  .isNotEmpty) {
+                                            if (widget.newDraftOrders!
+                                                .where((e) =>
+                                                    e.supplierReference ==
+                                                    _model.selectedOrderOption
+                                                        ?.supplierReference)
+                                                .toList()
+                                                .isNotEmpty) {
+                                              var orderItemsRecordReference1 =
+                                                  OrderItemsRecord.createDoc(widget
+                                                      .newDraftOrders!
+                                                      .where((e) =>
+                                                          e.supplierReference ==
+                                                          _model
+                                                              .selectedOrderOption
+                                                              ?.supplierReference)
+                                                      .toList()
+                                                      .first
+                                                      .reference);
+                                              await orderItemsRecordReference1
+                                                  .set(
+                                                      createOrderItemsRecordData(
                                                 itemReference: _model
                                                     .selectedItemDocument
                                                     ?.reference,
@@ -778,27 +780,35 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                                     double.tryParse(_model
                                                         .counterFieldController
                                                         .text),
-                                              ),
-                                              orderItemsRecordReference1);
-                                      Navigator.pop(
-                                          context, _model.newOrderItem1);
-                                    } else {
-                                      var ordersRecordReference1 =
-                                          OrdersRecord.collection.doc();
-                                      await ordersRecordReference1
-                                          .set(createOrdersRecordData(
-                                        departmentReference: FFAppState()
-                                            .departmentAppState
-                                            .departmentReference,
-                                        supplierReference: _model
-                                            .selectedOrderOption
-                                            ?.supplierReference,
-                                        status: 'Draft',
-                                        orderID: '10102',
-                                      ));
-                                      _model.newDraftOrder2 =
-                                          OrdersRecord.getDocumentFromData(
-                                              createOrdersRecordData(
+                                              ));
+                                              _model.newOrderItem1 = OrderItemsRecord
+                                                  .getDocumentFromData(
+                                                      createOrderItemsRecordData(
+                                                        itemReference: _model
+                                                            .selectedItemDocument
+                                                            ?.reference,
+                                                        itemName: _model
+                                                            .selectedItemDocument
+                                                            ?.itemName,
+                                                        unit: _model
+                                                            .selectedOrderOption
+                                                            ?.purchaseUnit,
+                                                        pricePerUnit: _model
+                                                            .selectedItemDocument
+                                                            ?.currentPrice,
+                                                        quantityOrdered: double
+                                                            .tryParse(_model
+                                                                .counterFieldController
+                                                                .text),
+                                                      ),
+                                                      orderItemsRecordReference1);
+                                              Navigator.pop(context,
+                                                  _model.newOrderItem1);
+                                            } else {
+                                              var ordersRecordReference1 =
+                                                  OrdersRecord.collection.doc();
+                                              await ordersRecordReference1
+                                                  .set(createOrdersRecordData(
                                                 departmentReference:
                                                     FFAppState()
                                                         .departmentAppState
@@ -808,31 +818,32 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                                     ?.supplierReference,
                                                 status: 'Draft',
                                                 orderID: '10102',
-                                              ),
-                                              ordersRecordReference1);
-                                      await widget.addOrderAction?.call(
-                                        _model.newDraftOrder2,
-                                      );
+                                              ));
+                                              _model.newDraftOrder2 = OrdersRecord
+                                                  .getDocumentFromData(
+                                                      createOrdersRecordData(
+                                                        departmentReference:
+                                                            FFAppState()
+                                                                .departmentAppState
+                                                                .departmentReference,
+                                                        supplierReference: _model
+                                                            .selectedOrderOption
+                                                            ?.supplierReference,
+                                                        status: 'Draft',
+                                                        orderID: '10102',
+                                                      ),
+                                                      ordersRecordReference1);
+                                              await widget.addOrderAction?.call(
+                                                _model.newDraftOrder2,
+                                              );
 
-                                      var orderItemsRecordReference2 =
-                                          OrderItemsRecord.createDoc(
-                                              _model.newDraftOrder2!.reference);
-                                      await orderItemsRecordReference2
-                                          .set(createOrderItemsRecordData(
-                                        itemReference: _model
-                                            .selectedItemDocument?.reference,
-                                        itemName: _model
-                                            .selectedItemDocument?.itemName,
-                                        unit: _model
-                                            .selectedOrderOption?.purchaseUnit,
-                                        pricePerUnit: _model
-                                            .selectedItemDocument?.currentPrice,
-                                        quantityOrdered: double.tryParse(
-                                            _model.counterFieldController.text),
-                                      ));
-                                      _model.newOrderItem2 =
-                                          OrderItemsRecord.getDocumentFromData(
-                                              createOrderItemsRecordData(
+                                              var orderItemsRecordReference2 =
+                                                  OrderItemsRecord.createDoc(
+                                                      _model.newDraftOrder2!
+                                                          .reference);
+                                              await orderItemsRecordReference2
+                                                  .set(
+                                                      createOrderItemsRecordData(
                                                 itemReference: _model
                                                     .selectedItemDocument
                                                     ?.reference,
@@ -848,28 +859,36 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                                     double.tryParse(_model
                                                         .counterFieldController
                                                         .text),
-                                              ),
-                                              orderItemsRecordReference2);
-                                      Navigator.pop(
-                                          context, _model.newOrderItem2);
-                                    }
-                                  } else {
-                                    var ordersRecordReference2 =
-                                        OrdersRecord.collection.doc();
-                                    await ordersRecordReference2
-                                        .set(createOrdersRecordData(
-                                      departmentReference: FFAppState()
-                                          .departmentAppState
-                                          .departmentReference,
-                                      supplierReference: _model
-                                          .selectedOrderOption
-                                          ?.supplierReference,
-                                      status: 'Draft',
-                                      orderID: '10102',
-                                    ));
-                                    _model.newDraftOrder3 =
-                                        OrdersRecord.getDocumentFromData(
-                                            createOrdersRecordData(
+                                              ));
+                                              _model.newOrderItem2 = OrderItemsRecord
+                                                  .getDocumentFromData(
+                                                      createOrderItemsRecordData(
+                                                        itemReference: _model
+                                                            .selectedItemDocument
+                                                            ?.reference,
+                                                        itemName: _model
+                                                            .selectedItemDocument
+                                                            ?.itemName,
+                                                        unit: _model
+                                                            .selectedOrderOption
+                                                            ?.purchaseUnit,
+                                                        pricePerUnit: _model
+                                                            .selectedItemDocument
+                                                            ?.currentPrice,
+                                                        quantityOrdered: double
+                                                            .tryParse(_model
+                                                                .counterFieldController
+                                                                .text),
+                                                      ),
+                                                      orderItemsRecordReference2);
+                                              Navigator.pop(context,
+                                                  _model.newOrderItem2);
+                                            }
+                                          } else {
+                                            var ordersRecordReference2 =
+                                                OrdersRecord.collection.doc();
+                                            await ordersRecordReference2
+                                                .set(createOrdersRecordData(
                                               departmentReference: FFAppState()
                                                   .departmentAppState
                                                   .departmentReference,
@@ -878,31 +897,31 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                                   ?.supplierReference,
                                               status: 'Draft',
                                               orderID: '10102',
-                                            ),
-                                            ordersRecordReference2);
-                                    await widget.addOrderAction?.call(
-                                      _model.newDraftOrder3,
-                                    );
+                                            ));
+                                            _model.newDraftOrder3 = OrdersRecord
+                                                .getDocumentFromData(
+                                                    createOrdersRecordData(
+                                                      departmentReference:
+                                                          FFAppState()
+                                                              .departmentAppState
+                                                              .departmentReference,
+                                                      supplierReference: _model
+                                                          .selectedOrderOption
+                                                          ?.supplierReference,
+                                                      status: 'Draft',
+                                                      orderID: '10102',
+                                                    ),
+                                                    ordersRecordReference2);
+                                            await widget.addOrderAction?.call(
+                                              _model.newDraftOrder3,
+                                            );
 
-                                    var orderItemsRecordReference3 =
-                                        OrderItemsRecord.createDoc(
-                                            _model.newDraftOrder3!.reference);
-                                    await orderItemsRecordReference3
-                                        .set(createOrderItemsRecordData(
-                                      itemReference: _model
-                                          .selectedItemDocument?.reference,
-                                      itemName:
-                                          _model.selectedItemDocument?.itemName,
-                                      unit: _model
-                                          .selectedOrderOption?.purchaseUnit,
-                                      pricePerUnit: _model
-                                          .selectedItemDocument?.currentPrice,
-                                      quantityOrdered: double.tryParse(
-                                          _model.counterFieldController.text),
-                                    ));
-                                    _model.newOrderItem3 =
-                                        OrderItemsRecord.getDocumentFromData(
-                                            createOrderItemsRecordData(
+                                            var orderItemsRecordReference3 =
+                                                OrderItemsRecord.createDoc(
+                                                    _model.newDraftOrder3!
+                                                        .reference);
+                                            await orderItemsRecordReference3
+                                                .set(createOrderItemsRecordData(
                                               itemReference: _model
                                                   .selectedItemDocument
                                                   ?.reference,
@@ -917,42 +936,73 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                               quantityOrdered: double.tryParse(
                                                   _model.counterFieldController
                                                       .text),
-                                            ),
-                                            orderItemsRecordReference3);
-                                    Navigator.pop(
-                                        context, _model.newOrderItem3);
-                                  }
+                                            ));
+                                            _model.newOrderItem3 = OrderItemsRecord
+                                                .getDocumentFromData(
+                                                    createOrderItemsRecordData(
+                                                      itemReference: _model
+                                                          .selectedItemDocument
+                                                          ?.reference,
+                                                      itemName: _model
+                                                          .selectedItemDocument
+                                                          ?.itemName,
+                                                      unit: _model
+                                                          .selectedOrderOption
+                                                          ?.purchaseUnit,
+                                                      pricePerUnit: _model
+                                                          .selectedItemDocument
+                                                          ?.currentPrice,
+                                                      quantityOrdered:
+                                                          double.tryParse(_model
+                                                              .counterFieldController
+                                                              .text),
+                                                    ),
+                                                    orderItemsRecordReference3);
+                                            Navigator.pop(
+                                                context, _model.newOrderItem3);
+                                          }
 
-                                  setState(() {});
-                                },
-                                text: 'Add to Order',
-                                options: FFButtonOptions(
-                                  width: 150.0,
-                                  height: 45.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 0.0, 24.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).tertiary,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Roboto',
-                                        color: FlutterFlowTheme.of(context)
-                                            .secondary,
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.normal,
+                                          setState(() {});
+                                        },
+                                        text: 'Add to Order',
+                                        options: FFButtonOptions(
+                                          width: 150.0,
+                                          height: 45.0,
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  24.0, 0.0, 24.0, 0.0),
+                                          iconPadding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 0.0),
+                                          color: FlutterFlowTheme.of(context)
+                                              .tertiary,
+                                          textStyle: FlutterFlowTheme.of(
+                                                  context)
+                                              .titleSmall
+                                              .override(
+                                                fontFamily: 'Roboto',
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
+                                                fontSize: 16.0,
+                                                fontWeight: FontWeight.normal,
+                                              ),
+                                          elevation: 0.0,
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .tertiary,
+                                            width: 0.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                        ),
                                       ),
-                                  elevation: 0.0,
-                                  borderSide: BorderSide(
-                                    color:
-                                        FlutterFlowTheme.of(context).tertiary,
-                                    width: 0.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(8.0),
-                                ),
+                                    ),
+                                ]
+                                    .divide(SizedBox(width: 15.0))
+                                    .around(SizedBox(width: 15.0)),
                               ),
-                            ],
+                            ),
                           ),
                         ),
                       ),
