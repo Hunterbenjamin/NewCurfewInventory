@@ -426,6 +426,7 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                         ),
                                       ),
                                       Container(
+                                        height: 50.0,
                                         decoration: BoxDecoration(),
                                         child: Stack(
                                           alignment:
@@ -444,6 +445,7 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .alternate,
+                                                  width: 1.0,
                                                 ),
                                               ),
                                               child: Row(
@@ -516,13 +518,12 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                                         setState(() {
                                                           _model
                                                               .counterFieldController
-                                                              ?.text = ((double
-                                                                  var1) {
-                                                            return '${var1 == var1.toInt() ? var1.toInt() : var1 + 1}';
-                                                          }(
-                                                              double.parse(_model
-                                                                  .counterFieldController
-                                                                  .text)));
+                                                              ?.text = (double
+                                                                      .parse(_model
+                                                                          .counterFieldController
+                                                                          .text) +
+                                                                  1)
+                                                              .toString();
                                                         });
                                                       }
                                                     },
@@ -550,94 +551,93 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                             Container(
                                               height: 50.0,
                                               decoration: BoxDecoration(),
-                                              child: Container(
-                                                width: 70.0,
-                                                child: TextFormField(
-                                                  controller: _model
-                                                      .counterFieldController,
-                                                  focusNode: _model
-                                                      .counterFieldFocusNode,
-                                                  obscureText: false,
-                                                  decoration: InputDecoration(
-                                                    labelStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .labelMedium
+                                              child: Align(
+                                                alignment: AlignmentDirectional(
+                                                    0.0, 0.0),
+                                                child: Container(
+                                                  width: 70.0,
+                                                  child: TextFormField(
+                                                    controller: _model
+                                                        .counterFieldController,
+                                                    focusNode: _model
+                                                        .counterFieldFocusNode,
+                                                    obscureText: false,
+                                                    decoration: InputDecoration(
+                                                      labelStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Roboto',
+                                                                fontSize: 16.0,
+                                                              ),
+                                                      hintStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .labelMedium,
+                                                      enabledBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .alternate,
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0.0),
+                                                      ),
+                                                      focusedBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .info,
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0.0),
+                                                      ),
+                                                      errorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0.0),
+                                                      ),
+                                                      focusedErrorBorder:
+                                                          OutlineInputBorder(
+                                                        borderSide: BorderSide(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .error,
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0.0),
+                                                      ),
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
-                                                          fontSize: 16.0,
+                                                          fontSize: 18.0,
+                                                          lineHeight: 1.0,
                                                         ),
-                                                    hintStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .labelMedium,
-                                                    enabledBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .alternate,
-                                                        width: 1.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0.0),
-                                                    ),
-                                                    focusedBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .info,
-                                                        width: 1.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0.0),
-                                                    ),
-                                                    errorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                        width: 1.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0.0),
-                                                    ),
-                                                    focusedErrorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
-                                                        width: 1.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0.0),
-                                                    ),
-                                                    contentPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(16.0, 4.0,
-                                                                16.0, 4.0),
+                                                    textAlign: TextAlign.center,
+                                                    validator: _model
+                                                        .counterFieldControllerValidator
+                                                        .asValidator(context),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        fontSize: 18.0,
-                                                      ),
-                                                  textAlign: TextAlign.center,
-                                                  validator: _model
-                                                      .counterFieldControllerValidator
-                                                      .asValidator(context),
                                                 ),
                                               ),
                                             ),
