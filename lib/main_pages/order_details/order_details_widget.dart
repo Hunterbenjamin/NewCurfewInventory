@@ -276,10 +276,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Roboto',
-                                                                color: widget
-                                                                            .orderDocument
-                                                                            ?.status ==
-                                                                        'Complete'
+                                                                color: _model
+                                                                            .isCompleted ==
+                                                                        true
                                                                     ? FlutterFlowTheme.of(
                                                                             context)
                                                                         .success
