@@ -375,15 +375,12 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Expanded(
-                                    child: Text(
-                                      'Order Qty',
-                                      textAlign: TextAlign.center,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Roboto',
-                                            fontSize: 16.0,
-                                          ),
+                                    flex: 1,
+                                    child: Align(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(),
+                                      ),
                                     ),
                                   ),
                                   Container(
@@ -584,10 +581,13 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                   Expanded(
                                     flex: 1,
                                     child: Align(
-                                      alignment:
-                                          AlignmentDirectional(-1.0, 0.0),
+                                      alignment: AlignmentDirectional(0.0, 0.0),
                                       child: Text(
-                                        '${_model.selectedOrderOption?.packSize?.toString()} x ${_model.selectedItemDocument?.unit?.unitSpecific} (${_model.selectedOrderOption?.purchaseUnit})',
+                                        valueOrDefault<String>(
+                                          _model.selectedOrderOption
+                                              ?.purchaseUnit,
+                                          'unit',
+                                        ),
                                         textAlign: TextAlign.center,
                                         style: FlutterFlowTheme.of(context)
                                             .bodyMedium
@@ -596,7 +596,7 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .secondaryText,
-                                              fontSize: 16.0,
+                                              fontSize: 18.0,
                                             ),
                                       ),
                                     ),

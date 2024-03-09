@@ -13,7 +13,7 @@ class OrderingOptionStruct extends FFFirebaseStruct {
     DocumentReference? supplierReference,
     String? purchaseUnit,
     int? price,
-    double? packSize,
+    int? packSize,
     FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _supplierReference = supplierReference,
         _purchaseUnit = purchaseUnit,
@@ -41,10 +41,10 @@ class OrderingOptionStruct extends FFFirebaseStruct {
   bool hasPrice() => _price != null;
 
   // "pack_size" field.
-  double? _packSize;
-  double get packSize => _packSize ?? 0.0;
-  set packSize(double? val) => _packSize = val;
-  void incrementPackSize(double amount) => _packSize = packSize + amount;
+  int? _packSize;
+  int get packSize => _packSize ?? 0;
+  set packSize(int? val) => _packSize = val;
+  void incrementPackSize(int amount) => _packSize = packSize + amount;
   bool hasPackSize() => _packSize != null;
 
   static OrderingOptionStruct fromMap(Map<String, dynamic> data) =>
@@ -52,7 +52,7 @@ class OrderingOptionStruct extends FFFirebaseStruct {
         supplierReference: data['supplier_reference'] as DocumentReference?,
         purchaseUnit: data['purchase_unit'] as String?,
         price: castToType<int>(data['price']),
-        packSize: castToType<double>(data['pack_size']),
+        packSize: castToType<int>(data['pack_size']),
       );
 
   static OrderingOptionStruct? maybeFromMap(dynamic data) => data is Map
@@ -82,7 +82,7 @@ class OrderingOptionStruct extends FFFirebaseStruct {
         ),
         'pack_size': serializeParam(
           _packSize,
-          ParamType.double,
+          ParamType.int,
         ),
       }.withoutNulls;
 
@@ -106,7 +106,7 @@ class OrderingOptionStruct extends FFFirebaseStruct {
         ),
         packSize: deserializeParam(
           data['pack_size'],
-          ParamType.double,
+          ParamType.int,
           false,
         ),
       );
@@ -132,7 +132,7 @@ OrderingOptionStruct createOrderingOptionStruct({
   DocumentReference? supplierReference,
   String? purchaseUnit,
   int? price,
-  double? packSize,
+  int? packSize,
   Map<String, dynamic> fieldValues = const {},
   bool clearUnsetFields = true,
   bool create = false,

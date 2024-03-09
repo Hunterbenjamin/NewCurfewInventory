@@ -600,9 +600,6 @@ class _InventoryWidgetState extends State<InventoryWidget> {
                                                   Duration(milliseconds: 100),
                                                   () => setState(() {}),
                                                 ),
-                                                readOnly: _model.countReference
-                                                        ?.reference ==
-                                                    null,
                                                 obscureText: false,
                                                 decoration: InputDecoration(
                                                   isDense: true,

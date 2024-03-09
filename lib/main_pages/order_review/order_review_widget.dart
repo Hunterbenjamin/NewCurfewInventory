@@ -88,17 +88,20 @@ class _OrderReviewWidgetState extends State<OrderReviewWidget> {
           child: Builder(
             builder: (context) {
               final orderVar = widget.draftOrders?.toList() ?? [];
-              return Column(
-                mainAxisSize: MainAxisSize.max,
-                children: List.generate(orderVar.length, (orderVarIndex) {
-                  final orderVarItem = orderVar[orderVarIndex];
-                  return OrderReviewComponentWidget(
-                    key: Key('Key1j7_${orderVarIndex}_of_${orderVar.length}'),
-                    orderDocument: orderVarItem,
-                  );
-                })
-                    .divide(SizedBox(height: 15.0))
-                    .addToStart(SizedBox(height: 10.0)),
+              return SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: List.generate(orderVar.length, (orderVarIndex) {
+                    final orderVarItem = orderVar[orderVarIndex];
+                    return OrderReviewComponentWidget(
+                      key: Key('Key1j7_${orderVarIndex}_of_${orderVar.length}'),
+                      orderDocument: orderVarItem,
+                    );
+                  })
+                      .divide(SizedBox(height: 15.0))
+                      .addToStart(SizedBox(height: 10.0))
+                      .addToEnd(SizedBox(height: 10.0)),
+                ),
               );
             },
           ),

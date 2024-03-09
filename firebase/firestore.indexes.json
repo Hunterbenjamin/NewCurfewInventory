@@ -1,6 +1,20 @@
 {
   "indexes": [
     {
+      "collectionGroup": "orders",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "departmentReference",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "dateSent",
+          "order": "ASCENDING"
+        }
+      ]
+    },
+    {
       "collectionGroup": "inventory_items",
       "queryScope": "COLLECTION",
       "fields": [

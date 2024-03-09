@@ -148,16 +148,18 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                             EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
                         child: StreamBuilder<List<OrdersRecord>>(
                           stream: queryOrdersRecord(
-                            queryBuilder: (ordersRecord) => ordersRecord.where(
-                              'departmentReference',
-                              isEqualTo: FFAppState()
-                                  .departmentAppState
-                                  .departmentReference,
-                              isNull: (FFAppState()
+                            queryBuilder: (ordersRecord) => ordersRecord
+                                .where(
+                                  'departmentReference',
+                                  isEqualTo: FFAppState()
                                       .departmentAppState
-                                      .departmentReference) ==
-                                  null,
-                            ),
+                                      .departmentReference,
+                                  isNull: (FFAppState()
+                                          .departmentAppState
+                                          .departmentReference) ==
+                                      null,
+                                )
+                                .orderBy('dateSent'),
                           ),
                           builder: (context, snapshot) {
                             // Customize what your widget looks like when it's loading.
