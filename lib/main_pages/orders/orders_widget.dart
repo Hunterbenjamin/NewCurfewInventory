@@ -1,12 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
 import '/backend/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,7 +30,6 @@ class _OrdersWidgetState extends State<OrdersWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.suppliers = await querySuppliersRecordOnce();
       setState(() {
         _model.isLoading = false;
       });
@@ -550,57 +546,89 @@ class _OrdersWidgetState extends State<OrdersWidget> {
                                     ),
                                     Expanded(
                                       flex: 1,
-                                      child: FlutterFlowDropDown<String>(
-                                        controller:
-                                            _model.dropDownValueController2 ??=
+                                      child:
+                                          FutureBuilder<List<SuppliersRecord>>(
+                                        future: querySuppliersRecordOnce(),
+                                        builder: (context, snapshot) {
+                                          // Customize what your widget looks like when it's loading.
+                                          if (!snapshot.hasData) {
+                                            return Center(
+                                              child: SizedBox(
+                                                width: 50.0,
+                                                height: 50.0,
+                                                child:
+                                                    CircularProgressIndicator(
+                                                  valueColor:
+                                                      AlwaysStoppedAnimation<
+                                                          Color>(
+                                                    FlutterFlowTheme.of(context)
+                                                        .primary,
+                                                  ),
+                                                ),
+                                              ),
+                                            );
+                                          }
+                                          List<SuppliersRecord>
+                                              dropDownSuppliersRecordList =
+                                              snapshot.data!;
+                                          return FlutterFlowDropDown<String>(
+                                            controller: _model
+                                                    .dropDownValueController2 ??=
                                                 FormFieldController<String>(
-                                          _model.dropDownValue2 ??=
-                                              'All Suppliers',
-                                        ),
-                                        options: List<String>.from(
-                                            (List<String> var1) {
-                                          return ["All Suppliers"] + var1;
-                                        }(_model.suppliers!
-                                                .map((e) => e.reference.id)
-                                                .toList())),
-                                        optionLabels: (List<String> var1) {
-                                          return ["All Suppliers"] + var1;
-                                        }(_model.suppliers!
-                                            .map((e) => e.supplierName)
-                                            .toList()),
-                                        onChanged: (val) => setState(
-                                            () => _model.dropDownValue2 = val),
-                                        height: 45.0,
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Roboto',
+                                              _model.dropDownValue2 ??=
+                                                  'All Suppliers',
+                                            ),
+                                            options: List<String>.from(
+                                                (List<String> var1) {
+                                              return ["All Suppliers"] + var1;
+                                            }(dropDownSuppliersRecordList
+                                                    .map((e) => e.reference.id)
+                                                    .toList())),
+                                            optionLabels: (List<String> var1) {
+                                              return ["All Suppliers"] + var1;
+                                            }(dropDownSuppliersRecordList
+                                                .map((e) => e.supplierName)
+                                                .toList()),
+                                            onChanged: (val) => setState(() =>
+                                                _model.dropDownValue2 = val),
+                                            height: 45.0,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'Roboto',
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .secondaryText,
+                                                      fontSize: 16.0,
+                                                    ),
+                                            hintText: 'Filter Supplier...',
+                                            icon: Icon(
+                                              Icons.filter_list,
                                               color:
                                                   FlutterFlowTheme.of(context)
-                                                      .secondaryText,
-                                              fontSize: 16.0,
+                                                      .accent2,
+                                              size: 24.0,
                                             ),
-                                        hintText: 'Filter Supplier...',
-                                        icon: Icon(
-                                          Icons.filter_list,
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent2,
-                                          size: 24.0,
-                                        ),
-                                        fillColor: FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                        elevation: 2.0,
-                                        borderColor:
-                                            FlutterFlowTheme.of(context)
-                                                .alternate,
-                                        borderWidth: 1.0,
-                                        borderRadius: 5.0,
-                                        margin: EdgeInsetsDirectional.fromSTEB(
-                                            20.0, 0.0, 10.0, 0.0),
-                                        hidesUnderline: true,
-                                        isOverButton: false,
-                                        isSearchable: false,
-                                        isMultiSelect: false,
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            elevation: 2.0,
+                                            borderColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .alternate,
+                                            borderWidth: 1.0,
+                                            borderRadius: 5.0,
+                                            margin:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 0.0, 10.0, 0.0),
+                                            hidesUnderline: true,
+                                            isOverButton: false,
+                                            isSearchable: false,
+                                            isMultiSelect: false,
+                                          );
+                                        },
                                       ),
                                     ),
                                   ]

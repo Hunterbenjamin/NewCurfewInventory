@@ -789,7 +789,9 @@ class _OrderDetailsWidgetState extends State<OrderDetailsWidget> {
                                                 !_model.isReceiving;
                                           });
                                         },
-                                        text: 'Receive Items',
+                                        text: _model.isReceiving
+                                            ? 'Done'
+                                            : 'Receive Items',
                                         options: FFButtonOptions(
                                           width: 150.0,
                                           height: 45.0,

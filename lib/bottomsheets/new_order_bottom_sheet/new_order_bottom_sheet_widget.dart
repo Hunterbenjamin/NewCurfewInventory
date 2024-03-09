@@ -50,7 +50,7 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
-    _model.counterFieldController ??= TextEditingController();
+    _model.counterFieldController ??= TextEditingController(text: '2');
     _model.counterFieldFocusNode ??= FocusNode();
   }
 
@@ -516,12 +516,13 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                                         setState(() {
                                                           _model
                                                               .counterFieldController
-                                                              ?.text = (double
-                                                                      .parse(_model
-                                                                          .counterFieldController
-                                                                          .text) +
-                                                                  1)
-                                                              .toString();
+                                                              ?.text = ((double
+                                                                  var1) {
+                                                            return '${var1 == var1.toInt() ? var1.toInt() : var1 + 1}';
+                                                          }(
+                                                              double.parse(_model
+                                                                  .counterFieldController
+                                                                  .text)));
                                                         });
                                                       }
                                                     },
@@ -621,6 +622,10 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                                           BorderRadius.circular(
                                                               0.0),
                                                     ),
+                                                    contentPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(16.0, 4.0,
+                                                                16.0, 4.0),
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -691,7 +696,7 @@ class _NewOrderBottomSheetWidgetState extends State<NewOrderBottomSheetWidget> {
                                   });
                                   setState(() {
                                     _model.textController1?.clear();
-                                    _model.counterFieldController?.clear();
+                                    _model.counterFieldController?.text = '2';
                                   });
                                 },
                                 text: 'Cancel',
